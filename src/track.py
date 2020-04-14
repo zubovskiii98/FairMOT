@@ -87,8 +87,10 @@ def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_im
 
 def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), exp_name='demo',
          save_images=False, save_videos=False, show_image=True):
+    print('OPT: {}'.format(opt))
     logger.setLevel(logging.INFO)
-    result_root = os.path.join(data_root, '..', 'results', exp_name)
+    result_root = os.path.join('..', 'results', exp_name)
+    print (result_root)
     mkdir_if_missing(result_root)
     data_type = 'mot'
 
@@ -139,6 +141,8 @@ def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), 
 if __name__ == '__main__':
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     opt = opts().init()
+
+    print('Opt dir {}'.format(opt))
 
     if not opt.val_mot16:
         seqs_str = '''KITTI-13

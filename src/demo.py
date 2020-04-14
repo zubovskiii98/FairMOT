@@ -19,6 +19,7 @@ logger.setLevel(logging.INFO)
 
 def demo(opt):
     result_root = opt.output_root if opt.output_root != '' else '.'
+    print('OPT: {}'.format(opt.input_video))
     mkdir_if_missing(result_root)
 
     logger.info('Starting tracking...')
@@ -29,7 +30,7 @@ def demo(opt):
     frame_dir = None if opt.output_format == 'text' else osp.join(result_root, 'frame')
     try:
         eval_seq(opt, dataloader, 'mot', result_filename,
-                 save_dir=frame_dir, show_image=False, frame_rate=frame_rate)
+                 save_dir=frame_dir, show_image=True, frame_rate=frame_rate)
     except Exception as e:
         logger.info(e)
 
